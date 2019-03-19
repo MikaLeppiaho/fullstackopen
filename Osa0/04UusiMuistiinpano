@@ -1,3 +1,4 @@
+title Uusi muistiinpano
 
 Selain->Palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
 note right of Selain: Selain lähettää lomakkeelle syötetyn muistiinpanon
@@ -14,3 +15,6 @@ Selain->Palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
 Palvelin-->Selain: data.json muistiinpanolista
 note over Selain: Selain suorittaa tapahtumakäsittelijän joka renderöi datan näytölle
 end note
+
+
+

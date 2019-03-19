@@ -1,0 +1,12 @@
+title Send data with SPA
+note over Selain: JS-koodi luo uuden muistiinpanon ja lisää sen muistiinpanojen listalle.
+end note
+note left of Selain: Uusi muistiinpanolista piiretään selaimelle
+end note
+Selain->Palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+Note over Palvelin: Palvelin vastaanottaa uuden muistiinpanon
+
+
+
+
+
