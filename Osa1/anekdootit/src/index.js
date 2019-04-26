@@ -1,42 +1,78 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
+import { SlowBuffer } from 'buffer';
 
 const App = (props) =>{
     const [selected, setSelected] = useState(0)
-
+    let [votes, setVote] = useState([0,0,0,0,0,0])
     
 
-    const nextAnecdote= () => setSelected(Math.floor(Math.random()*(5 - 0))+ 0)
-
+    const nextAnecdote = () => setSelected(Math.floor(Math.random()*(5 - 0))+ 0)
     
-    const updateVotes = () =>{
-        console.log(props.points)
+    const vote = () => {
+        const copy = [...votes]
+        copy[selected] +=1
+        setVote(votes = copy)
+        console.log(copy)
+    
     }
-    
+    const winner = () =>{
+        
+        const max = votes.indexOf(Math.max(...votes))
+        console.log("Index of winner: ",max)
+
+        return max
+        }
+
+
 
     return (
     <div>
-        
-        {console.log(selected)}
+
         {props.anecdotes[selected]}
-        <Aanestys selected ={selected}/>
-        <button onClick={updateVotes}>Vote</button>
-        <button onClick={nextAnecdote}>Next anecdote</button>
+        <Button handleClick={nextAnecdote} text = "Next anecdote" selected={selected}/>
+        <Button handleClick={vote} text = "Vote"/>
+        <Vote vote={votes} i={selected}/>
+        <Winner winner={winner()} anek={anecdotes}/>
         
     </div>
     )
+    
 }
 
-const Aanestys = (props) =>{
+const Button = ({handleClick, text}) =>(
+    <div>
+        <button onClick={handleClick}>{text}</button>
+        
+    </div>
+)
+const Vote = ({vote, i}) =>{
+
     return(
-        <div>Has {props.selected} vote</div>
+        <div>Has {vote[i]} votes</div>
     )
 }
 
+const Winner =({winner, anek}) => {
+    //console.log(winner)
+    return(
+        <div>
+        <h1>Anecdote with most votes</h1>
+        {anek[winner]}<br/>
+        With {winner} votes
+        </div>
+    )
+
+}
 
 
 
-const points = Array.apply(null, new Array(10)).map(Number.prototype.valueOf,0);
+
+
+
+
+
+
 
 const anecdotes = [
     'If it hurts, do it more often',
@@ -49,4 +85,3 @@ const anecdotes = [
 
 
 ReactDOM.render(<App anecdotes={anecdotes} />, document.getElementById('root'));
-
