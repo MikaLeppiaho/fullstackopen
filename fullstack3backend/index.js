@@ -11,7 +11,7 @@ app.use(express.static('build'))
 app.use(bodyParser.json())
 
 
-morgan.token('body', function (req, res) {return JSON.stringify(req.body)})
+morgan.token('body', function ( req ) { return JSON.stringify(req.body) })
 app.use(morgan(' :method :url :status :res[content-length] :response-time ms :body'))
 
 app.use(cors())
@@ -21,7 +21,7 @@ app.get('/api/persons', (req, res, next) => {
     Person.find({}).then(persons => {
         res.json(persons.map(person => person.toJSON()))
     })
-    .catch(error => next(error))
+        .catch(error => next(error))
 })
 
 app.get('/info', (req,res, next) => {
@@ -31,11 +31,8 @@ app.get('/info', (req,res, next) => {
             res.send(`<p>Phonebook has info for ${persons} people</p>
             ${Date()}
             `)
-        }
-       
-    )
-    
-    .catch(error => next(error))
+        })
+        .catch(error => next(error))
     
 })
 
@@ -56,17 +53,9 @@ app.delete('/api/persons/:id', (req,res, next) => {
         .then(res => {
             res.status(204).end()
         })
-    .catch(error => next(error))
+        .catch(error => next(error))
 })
 
-
-
-const generateId = () => {
-    const maxId = persons.length > 0
-    ? Math.max(...persons.map(n => n.id))
-    : 0
-    return maxId + 1
-}
 
 app.post('/api/persons', (req,res, next) =>{
 
@@ -79,7 +68,7 @@ app.post('/api/persons', (req,res, next) =>{
     person.save().then(savedPerson => {
         res.json(savedPerson.toJSON())
     })
-    .catch(error => next(error))
+        .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (req, res, next) => {
