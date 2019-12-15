@@ -11,7 +11,17 @@ const totalLikes = (blogs) => {
 }
 
 const favoriteBlog = (blogs) => {
-    return blogs.reduce((max,p) => p.likes > max ? p.likes: max, blogs[0].likes)
+    const likes =  blogs.reduce((max,p) => p.likes > max ? p: max, blogs[0].likes)
+    const bestBlog = {
+        title: likes.title,
+        author: likes.author,
+        likes: likes.likes
+    }
+    console.log(bestBlog)
+    return bestBlog
+}
+const mostBlogs = (blogs) => {
+    
 }
 
 
