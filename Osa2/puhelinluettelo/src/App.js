@@ -19,7 +19,6 @@ const PersonForm = (props) =>{
   
   return(
     <form onSubmit={props.onSubmit}>
-      <h2>Add new</h2>
        <div>
         Name: <input 
         value={props.nameChange}
@@ -86,7 +85,7 @@ const App = () =>{
       personService
       .removeName(e)      
       .then(() =>{
-        setErrorMessage('POISTETTUPOISTETTU')
+        setErrorMessage(`Information of ${name} has been removed from server`)
         setErrorColor('Green')
         setTimeout(()=>{
           setErrorMessage(null)
