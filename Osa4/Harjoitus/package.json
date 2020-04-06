@@ -4,8 +4,15 @@
   "description": "Harjoitus",
   "main": "index.js",
   "scripts": {
+    "dev": "npm nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mika Leppiaho",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
