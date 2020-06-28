@@ -10,7 +10,7 @@ const Notification = ({ message, errorCode}) =>{
         padding: '10px',
         marginBottom: '10px'
     }
-    console.log('ErrorMessage: ',message)
+    //console.log('ErrorMessage: ',message)
     if (message === null){
         return null
     }
